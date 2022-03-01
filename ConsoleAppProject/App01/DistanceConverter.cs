@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App01
 
         public const double METRES_IN_MILES = 1609.34;
 
-        public const double FEET_IN_METRES = 3.28084;
+        public const double FEET_IN_METRES = 0.3048;
 
         public const string FEET = "Feet";
         public const string METRES = "Metres";
@@ -37,7 +37,8 @@ namespace ConsoleAppProject.App01
 
 
 
-        
+        // Text Display of selected Units
+        // Initial Conversion method
         public void ConvertDistance()
         {
           OutputHeading();
@@ -54,6 +55,8 @@ namespace ConsoleAppProject.App01
             OutputDistance();
         }
 
+
+        // Distance Calculations
         private void CalculateDistance()
         {
             if (fromUnit == MILES && toUnit == FEET)
@@ -64,7 +67,28 @@ namespace ConsoleAppProject.App01
             {
                 toDistance = fromDistance / FEET_IN_MILES;
             }
+            else if (fromUnit == MILES && toUnit == METRES)
+            {
+                toDistance = fromDistance * METRES_IN_MILES;
+            }
+            else if (fromUnit == METRES && toUnit == MILES)
+            {
+                toDistance = fromDistance / METRES_IN_MILES;
+            }
+            else if (fromUnit == FEET && toUnit == METRES)
+            {
+                toDistance = fromDistance / FEET_IN_METRES;
+            }
+            else if (fromUnit == METRES && toUnit == FEET)
+            {
+                toDistance = fromDistance / FEET_IN_METRES;
+            }
         }
+
+        /// <summary>
+        /// To allow for a unit to be selected,
+        /// also repeat selected unit
+        /// </summary>
 
         private string SelectUnit(string prompt)
         {
@@ -89,9 +113,30 @@ namespace ConsoleAppProject.App01
             {
                 return MILES;
             }
+            else
+            {
+                Console.WriteLine("------------------------");
+                Console.WriteLine("Error, potential stack overflow prevented");
+                Console.WriteLine("Make Sure Value input is 1-3 next time");
+                Console.WriteLine("Restarting App in 5s");
+                Console.Beep();
+                System.Threading.Thread.Sleep(5000); // 5 Seconds delay
+
+                Console.Clear();
+
+                DistanceConverter converter = new DistanceConverter();
+
+                converter.ConvertDistance();
+            }
             return null;
         }
 
+
+
+        /// <summary>
+        /// Display Menu items and take
+        /// and repeat input choice
+        /// </summary>
         private static string DisplayChoices(string prompt)
         {
             Console.WriteLine();
@@ -110,18 +155,28 @@ namespace ConsoleAppProject.App01
 
         /// <summary>
         /// Prompt user to input of miles
+        /// Issue an error if input value below 0/negative
         /// </summary>
         private double InputDistance(string prompt)
         {
             Console.Write(prompt);
             string value = Console.ReadLine();
-            return Convert.ToDouble(value);
+            if (Double.TryParse(value, out double fromDistance))
+            {
+                fromDistance = Convert.ToDouble(value);
+                if (fromDistance < 0)
+                {
+                    fromDistance = InputDistance("Error, please input a positive value -> ");
+                }
+                return fromDistance;
+            }
+            else
+            {
+                fromDistance = InputDistance("Error, pls input a positive value -> ");
+                return fromDistance;
+            }
             
         }
-
-        //45;00 timestamp
- 
-
 
        
         /// <summary>
@@ -131,6 +186,7 @@ namespace ConsoleAppProject.App01
         {
             Console.WriteLine($" {fromDistance} {fromUnit} is {toDistance} {toUnit}!");
         }
+
 
 
         /// <summary>
