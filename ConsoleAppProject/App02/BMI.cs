@@ -35,7 +35,7 @@ namespace ConsoleAppProject.App02
             }
             while (Choice == null);
 
-            if (Choice == "Metric")
+            if (Choice == "metric")
             {
                 InputMetric();
             }
@@ -66,7 +66,7 @@ namespace ConsoleAppProject.App02
             Console.WriteLine("No.| NAME  |    WEIGHT     |  HEIGHT      ");
             Console.WriteLine("1) IMPERIAL - STONES+POUNDS FEET/INCH");
             Console.WriteLine("2) METRIC   - KILOGRAM      METRES");
-            Console.WriteLine("!-!-!-!-!-!");
+            Console.WriteLine("!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-!-");
             Console.WriteLine("Please enter 1 or 2");
             Choice = Console.ReadLine();
             if (Choice == "1")
