@@ -1,5 +1,6 @@
 ﻿using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
+using ConsoleAppProject.App03;
 using ConsoleAppProject.Helpers;
 using System;
 
@@ -36,6 +37,7 @@ namespace ConsoleAppProject
             Console.WriteLine("PLEASE SELECT APP");
             Console.WriteLine("1) APP01-DISTANCE CONVERTER");
             Console.WriteLine("2) APP02-BMI CALCULATOR");
+            Console.WriteLine("3) APP03-STUDENT GRADE CALCULATOR");
             Console.WriteLine("!-!-!-!-!");
             string choice = Console.ReadLine();
 
@@ -45,16 +47,21 @@ namespace ConsoleAppProject
 
                 converter.ConvertDistance();
             }
-            else if (choice == "2") 
+            else if (choice == "2")
             {
                 BMI bmi = new BMI();
 
 
                 bmi.Run();
             }
+            else if (choice == "3")
+            {
+                StudentGrades grades = new StudentGrades();
+                grades.Run();
+            }
             else
             {
-                Console.WriteLine(" 1 or 2");
+                Console.WriteLine(" 1 2 or 3");
             }
         }
     }
