@@ -123,10 +123,10 @@ namespace ConsoleAppProject.Helpers
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
 
-            Console.WriteLine("\n ---------------------------------");
+            Console.WriteLine("\n !+!+!+!+!+!+!+!+!+!+!+!+!+!+!");
             Console.WriteLine($"    {heading}          ");
             Console.WriteLine("     by ZARRAR AFZAL           ");
-            Console.WriteLine(" ---------------------------------" +
+            Console.WriteLine(" !+!+!+!+!+!+!+!!+!+!+!+!+!+!+!+!" +
                 "\n");
 
             Console.ForegroundColor = ConsoleColor.Yellow;

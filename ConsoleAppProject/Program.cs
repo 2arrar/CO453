@@ -1,6 +1,7 @@
 ﻿using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
 using ConsoleAppProject.App03;
+using ConsoleAppProject.App04;
 using ConsoleAppProject.Helpers;
 using System;
 
@@ -12,7 +13,7 @@ namespace ConsoleAppProject
     /// to start App01 to App05 for CO453 CW1
     /// 
     /// This Project has been modified by:
-    /// Derek Peacock 05/02/2022
+    /// ZARRAR AFZAL
     /// </summary>
     public static class Program
     {
@@ -38,6 +39,7 @@ namespace ConsoleAppProject
             Console.WriteLine("1) APP01-DISTANCE CONVERTER");
             Console.WriteLine("2) APP02-BMI CALCULATOR");
             Console.WriteLine("3) APP03-STUDENT GRADE CALCULATOR");
+            Console.WriteLine("4) APP04-SOCIAL NETWORK");
             Console.WriteLine("!-!-!-!-!");
             string choice = Console.ReadLine();
 
@@ -58,6 +60,11 @@ namespace ConsoleAppProject
             {
                 StudentGrades grades = new StudentGrades();
                 grades.Run();
+            }
+            else if (choice == "4")
+            {
+                SocialNetwork social = new SocialNetwork();
+                social.DisplayMenu();
             }
             else
             {
