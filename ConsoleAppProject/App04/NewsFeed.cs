@@ -25,7 +25,7 @@ namespace ConsoleAppProject.App04
         public int itemNumber;
 
         ///<summary>
-        /// Construct an empty news feed.
+        /// Construct a post to work with
         ///</summary>
         public NewsFeed()
         {
