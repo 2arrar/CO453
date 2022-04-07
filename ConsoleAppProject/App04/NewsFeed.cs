@@ -22,7 +22,6 @@ namespace ConsoleAppProject.App04
     {
         public const string AUTHOR = "sen7ry";
         public List<Post> Posts { get; }
-
         public int itemNumber;
 
         ///<summary>
@@ -37,24 +36,19 @@ namespace ConsoleAppProject.App04
             AddPost(photopost);
         }
 
-
-        ///<summary>
-        /// Add a post to the news feed.
-        /// 
-        /// @param post  The post to be added.
-        ///</summary>
+        /// Adds post to the 'news feed'
+        /// When you display all posts it would show up
         public void AddPost(Post post)
         {
             Posts.Add(post);
         }
 
         ///<summary>
-        /// Show the news feed. Currently: print the news feed details to the
-        /// terminal. (To do: replace this later with display in web browser.)
+        /// Displays all the posts made
         ///</summary>
         public void Display()
         {
-            // display all posts
+            // display all posts made
             foreach (var (item, index) in Posts.Select((value, i) => (value, i)))
             {
                 itemNumber = index + 1;
