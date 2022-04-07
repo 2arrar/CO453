@@ -21,6 +21,7 @@ namespace ConsoleAppProject.App04
                 string[] choices = new string[] { "ADD MESSAGE", "ADD PHOTO", "DISPLAY ALL POSTS", "DISPLAY USER POSTS", "DELTE POSTS", "ADD COMMENT", "LIKE A POST", "UNLIKE POST", "EXIT" };
                 int choice = ConsoleHelper.SelectChoice(choices);
 
+                
                 switch (choice)
                 {
                     case 1: PostMessage(); break;
@@ -36,7 +37,10 @@ namespace ConsoleAppProject.App04
             } while (!exit);
         }
 
-        // to post a message of somesort
+        
+        
+        // to post message and print questions to answer
+        // ie. whos the author, whats the message etc.
         public void PostMessage()
         {
             Console.WriteLine("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
@@ -54,7 +58,7 @@ namespace ConsoleAppProject.App04
         }
 
 
-        // displays all posts made in specific instance- WONT SAVE AFTER QUITTING
+        // displays all posts- bearinmg in mind all posts are saved.
 
         public void DisplayPosts()
         {
@@ -62,7 +66,7 @@ namespace ConsoleAppProject.App04
         }
 
 
-        // to post a photo, text input of url of image so "cats.png" etc.
+        // to post a photo, (wont actually post photo, but the URL of it)
 
         public void PostPhoto()
         {
@@ -78,18 +82,21 @@ namespace ConsoleAppProject.App04
 
             PhotoPost photoPost = new PhotoPost(author, filename, caption);
             news.AddPost(photoPost);
+            
             Console.WriteLine("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
             Console.WriteLine("The below post was added");
+            
             photoPost.Display();
         }
 
         
 
         /// <summary>
-        /// Displays all posts of a user selected author
+        /// Displays posts of specifc user
         /// </summary>
         public void DisplayAuthorPosts()
         {
+            
             Console.WriteLine("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
             Console.WriteLine("Enter the author's posts that you would like to look at");
             string author = Console.ReadLine();
@@ -103,7 +110,7 @@ namespace ConsoleAppProject.App04
         }
 
         /// <summary>
-        /// User selects and then deletes a post. The post is selected by its number
+        /// Deletes a post by ID number.
         /// </summary>
         public void DeletePost()
         {
@@ -113,12 +120,13 @@ namespace ConsoleAppProject.App04
             Console.WriteLine("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
             Console.WriteLine("You will remove the below post");
             news.Posts[number - 1].Display();
+            
             news.Posts.RemoveAt(number - 1);
         }
 
 
         /// <summary>
-        /// Adds a like to a post. User selects the post by its number
+        /// Adds a like to a post. displays the *increment by 1
         /// </summary>
         public void LikePost()
         {
@@ -128,6 +136,7 @@ namespace ConsoleAppProject.App04
             news.Posts[number - 1].Like();
             Console.WriteLine("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
             Console.WriteLine("You have liked the below post");
+            // this displays the liked post w/ new additional like
             news.Posts[number - 1].Display();
         }
 
@@ -146,13 +155,13 @@ namespace ConsoleAppProject.App04
         }
 
         /// <summary>
-        /// User adds a comment to a post. The post is selected by the number
+        /// To add a comment, list displayed and then you have to select which toadd
+        /// 
         /// </summary
         public void AddComment()
         {
             DisplayPosts();
             int number = (int)ConsoleHelper.InputNumber("Enter the post number that you would like to add a commnent to : ", 1, news.Posts.Count);
-
 
             Console.WriteLine("! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !");
             Console.WriteLine("You will comment on the below post");
