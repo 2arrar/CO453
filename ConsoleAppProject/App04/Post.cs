@@ -4,8 +4,7 @@ using System.Collections.Generic;
 namespace ConsoleAppProject.App04
 {
     /// <summary>
-    /// The base class for PhotoPost and MessagePost. Both classes
-    /// inherit from this class
+    /// baseplate class for photopost and messagepost class
     /// </summary>
     public class Post
     {
@@ -17,13 +16,12 @@ namespace ConsoleAppProject.App04
         {
             this.Username = author;
             Timestamp = DateTime.Now;
-
             likes = 0;
             comments = new List<String>();
         }
 
         ///<summary>
-        /// Record one more 'Like' indication from a user.
+        /// adds a like by increment of 1
         ///</summary>
         public void Like()
         {
@@ -31,7 +29,7 @@ namespace ConsoleAppProject.App04
         }
 
         ///<summary>
-        /// Record that a user has withdrawn his/her 'Like' vote.
+        /// if likes are bigger than 0, remove by increment of 1
         ///</summary>
         public void Unlike()
         {
@@ -53,10 +51,8 @@ namespace ConsoleAppProject.App04
         }
 
         ///<summary>
-        /// Display the details of this post.
-        /// 
-        /// (Currently: Print to the text terminal. This is simulating display 
-        /// in a web browser for now.)
+        /// displays details about post username,like
+        ///  time elapsed etc.
         ///</summary>
         public virtual void Display()
         {
@@ -85,11 +81,9 @@ namespace ConsoleAppProject.App04
         }
 
 
-
         /// <summary>
-        /// Create a string describing a time point in the past in terms s
-        /// relative to current time, suchh as "30 seconds ago" or "7 minutes ago".
-        /// Currently, only seconds and minutess are used for the string.
+        /// Displays eklapsed time of post
+        /// eg. 20secs elapsed
         /// </summary>
         /// <param name="time">
         /// The time value to convert (in system milliseconds)
@@ -101,7 +95,6 @@ namespace ConsoleAppProject.App04
         {
             DateTime current = DateTime.Now;
             TimeSpan timePast = current - time;
-
             long seconds = (long)timePast.TotalSeconds;
             long minutes = seconds / 60;
 
